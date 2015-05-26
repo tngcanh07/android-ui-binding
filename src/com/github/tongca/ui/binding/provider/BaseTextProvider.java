@@ -1,12 +1,12 @@
-package com.tongca.ui.binding.provider;
+package com.github.tongca.ui.binding.provider;
 
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.TextUtils;
 import android.widget.TextView;
 
-import com.tongca.ui.binding.UIBinding;
-import com.tongca.ui.binding.UITextViewUtils;
+import com.github.tongca.ui.binding.UIBinding;
+import com.github.tongca.ui.binding.UITextViewUtils;
 
 import java.util.HashMap;
 

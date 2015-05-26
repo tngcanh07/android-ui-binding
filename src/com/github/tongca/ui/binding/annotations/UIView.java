@@ -1,4 +1,4 @@
-package com.tongca.ui.binding.annotations;
+package com.github.tongca.ui.binding.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

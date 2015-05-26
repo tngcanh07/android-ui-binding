@@ -1,4 +1,4 @@
-package com.tongca.ui.binding;
+package com.github.tongca.ui.binding;
 
 import android.graphics.Typeface;
 import android.text.TextUtils;
@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tongca.ui.binding.annotations.UITextView;
-import com.tongca.ui.binding.provider.ITextProvider;
+import com.github.tongca.ui.binding.annotations.UITextView;
+import com.github.tongca.ui.binding.provider.ITextProvider;
 
 import java.lang.reflect.Field;
 import java.util.Map;
@@ -77,7 +77,7 @@ public class UITextViewUtils {
 
     /**
      * This method sets attributes which will be provided by
-     * {@link com.tongca.ui.binding.provider.ITextProvider} to textView
+     * {@link com.github.tongca.ui.binding.provider.ITextProvider} to textView
      *
      * @param textView TextView object
      * @param provider resources provider

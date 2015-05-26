@@ -1,4 +1,4 @@
-package com.tongca.ui.binding.provider;
+package com.github.tongca.ui.binding.provider;
 
 import android.graphics.Typeface;
 import android.widget.TextView;

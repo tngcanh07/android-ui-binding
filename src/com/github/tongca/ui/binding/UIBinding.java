@@ -1,12 +1,12 @@
-package com.tongca.ui.binding;
+package com.github.tongca.ui.binding;
 
 import android.app.Activity;
 import android.view.View;
 
-import com.tongca.ui.binding.provider.BaseResourceProvider;
-import com.tongca.ui.binding.provider.BaseTextProvider;
-import com.tongca.ui.binding.provider.IResourceProvider;
-import com.tongca.ui.binding.provider.ITextProvider;
+import com.github.tongca.ui.binding.provider.BaseResourceProvider;
+import com.github.tongca.ui.binding.provider.BaseTextProvider;
+import com.github.tongca.ui.binding.provider.IResourceProvider;
+import com.github.tongca.ui.binding.provider.ITextProvider;
 
 import java.lang.reflect.Field;
 
