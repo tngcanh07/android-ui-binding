@@ -16,19 +16,19 @@ import java.lang.reflect.Field;
 public class UIBinding {
     private static ITextProvider _textProvider;
     private static IResourceProvider _resProvider;
-    
+
     /**
      * private constructor
      */
     private UIBinding() {
     }
 
-    public static void setDebug(boolean isDebug) {
-        UIConfig.DEBUG = isDebug;
-    }
-
     public static boolean isDebug() {
         return UIConfig.DEBUG;
+    }
+
+    public static void setDebug(boolean isDebug) {
+        UIConfig.DEBUG = isDebug;
     }
 
     /**
@@ -62,26 +62,6 @@ public class UIBinding {
         bind(clazz, object, root);
     }
 
-    /**
-     * bind views to the T object
-     *
-     * @param clazz  Class instances representing T object
-     * @param object the object will hold the content of root view
-     * @param root   the root view
-     */
-    public static <T> void bind(Class<T> clazz, T object, View root) {
-        if (_textProvider == null) {
-            _textProvider = new BaseTextProvider(root.getContext());
-        }
-        // update TextView (text style and text value)
-        UITextViewUtils.updateTextViewFromXmlLayout(root, _textProvider);
-
-        // initial view
-        Field[] fields = clazz.getDeclaredFields();
-        for (Field field : fields) {
-            bindView(object, field, root);
-        }
-    }
 
     /**
      * bind views to the T object
@@ -102,18 +82,59 @@ public class UIBinding {
      * @param root   the root view
      */
     public static <T> void bind(T object, View root) {
-        if (_textProvider == null) {
-            _textProvider = new BaseTextProvider(root.getContext());
-        }
-
-        // update TextView (text style and text value)
-        UITextViewUtils.updateTextViewFromXmlLayout(root, _textProvider);
-
         // initial view
         Field[] fields = object.getClass().getDeclaredFields();
         for (Field field : fields) {
             bindView(object, field, root);
         }
+    }
+
+    /**
+     * bind views to the T object
+     *
+     * @param clazz  Class instances representing T object
+     * @param object the object will hold the content of root view
+     * @param root   the root view
+     */
+    public static <T> void bind(Class<T> clazz, T object, View root) {
+        // initial view
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            bindView(object, field, root);
+        }
+    }
+
+    /**
+     * bind views to the T object
+     *
+     * @param clazz  Class instances representing T object
+     * @param object the object will hold the content of root view
+     * @param root   the root view
+     */
+    public static <T> void bind(Class<T> clazz, T object, View root, boolean updateStyle) {
+        // initial view
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            bindView(object, field, root);
+        }
+        if(updateStyle) {
+            updateStyle(root);
+        }
+    }
+
+    public static void updateStyle(Activity activity) {
+        View root = activity.getWindow().getDecorView()
+                .findViewById(android.R.id.content);
+        updateStyle(root);
+    }
+
+
+    public static void updateStyle(View root) {
+        if (_textProvider == null) {
+            _textProvider = new BaseTextProvider(root.getContext());
+        }
+        // update TextView (text style and text value)
+        UITextViewUtils.updateTextViewFromXmlLayout(root, _textProvider);
     }
 
     /**
