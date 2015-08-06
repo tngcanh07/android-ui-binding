@@ -117,19 +117,29 @@ public class UIBinding {
         for (Field field : fields) {
             bindView(object, field, root);
         }
-        if(updateStyle) {
-            updateStyle(root);
+        if (updateStyle) {
+            style(root);
         }
     }
 
+    @Deprecated
     public static void updateStyle(Activity activity) {
-        View root = activity.getWindow().getDecorView()
-                .findViewById(android.R.id.content);
-        updateStyle(root);
+        style(activity);
     }
 
 
+    @Deprecated
     public static void updateStyle(View root) {
+        style(root);
+    }
+
+    public static void style(Activity activity) {
+        View root = activity.getWindow().getDecorView()
+                .findViewById(android.R.id.content);
+        style(root);
+    }
+
+    public static void style(View root) {
         if (_textProvider == null) {
             _textProvider = new BaseTextProvider(root.getContext());
         }
